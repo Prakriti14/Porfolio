@@ -44,6 +44,7 @@ export type Project = {
   summary: string;
   points: string[];
   tags: string[];
+  link?: string;
 };
 
 export const projects: Project[] = [
@@ -118,6 +119,7 @@ export const projects: Project[] = [
   {
     kind: "resume",
     title: "Resume Builder",
+    link: "https://resume-delta-pied-38.vercel.app/",
 
     summary:
       "A resume generator where you fill in your details, pick a template and download a ready-to-send PDF.",

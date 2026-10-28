@@ -32,6 +32,8 @@ import {
   IconSitemap,
   IconUpload,
   IconUser,
+  IconExternalLink,
+
 } from "@tabler/icons-react";
 
 import {
@@ -48,8 +50,6 @@ import { reduced, useCount, useInView } from "./hooks";
 
 const idx = (i: number) =>
   ({ "--i": i }) as CSSProperties;
-
-/* horizontal padding shared by every top-level section */
 const PAD = "px-5 nav:px-14";
 
 const SECTIONS = [
@@ -59,8 +59,6 @@ const SECTIONS = [
   { id: "experience", label: "Experience", Icon: IconBriefcase },
   { id: "contact", label: "Contact", Icon: IconMail },
 ];
-
-/* ---------- reveal animation ---------- */
 
 function Reveal({
   children,
@@ -86,8 +84,6 @@ function Reveal({
     </div>
   );
 }
-
-/* ---------- section heading ---------- */
 
 function Heading({
   text,
@@ -130,8 +126,6 @@ function Heading({
   );
 }
 
-/* ---------- animated statistics ---------- */
-
 function Stat({
   to,
   suffix = "",
@@ -167,8 +161,6 @@ function Stat({
     </div>
   );
 }
-
-/* ---------- profile photo ---------- */
 
 function Photo() {
   const [src, setSrc] = useState(profile.photo);
@@ -230,8 +222,6 @@ function Photo() {
   );
 }
 
-/* ---------- GraphQL code highlighting ---------- */
-
 function hl(src: string): ReactNode[] {
   const re =
     /("[^"]*"(?=:)|"[^"]*"?|\bquery\b|[{}()[\]:])/g;
@@ -271,8 +261,6 @@ function hl(src: string): ReactNode[] {
 
   return out;
 }
-
-/* ---------- hero code panel ---------- */
 
 const CODE =
   "overflow-x-auto px-5 pt-4 pb-1.5 font-mono text-[0.92rem] leading-[1.7] font-medium whitespace-pre";
@@ -391,8 +379,6 @@ function QueryPanel({ go }: { go: boolean }) {
     </div>
   );
 }
-
-/* ---------- project preview windows ---------- */
 
 const CHIP =
   "rounded-full border border-ink/14 bg-white px-3 py-0.5 text-xs";
@@ -721,8 +707,6 @@ function Mock({
   );
 }
 
-/* ---------- interactive projects ---------- */
-
 function Modules() {
   const [tab, setTab] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -827,6 +811,17 @@ function Modules() {
                 {tag}
               </span>
             ))}
+            {project.link && (
+  <a
+    href={project.link}
+    target="_blank"
+    rel="noreferrer"
+    className="mt-5 inline-flex items-center gap-1.5 font-semibold text-deep underline decoration-gold decoration-2 underline-offset-4 transition-[gap] duration-200 hover:gap-2.5"
+  >
+    Open Resume Builder
+    <IconExternalLink size={16} aria-hidden="true" />
+  </a>
+)}
           </div>
         </div>
 
@@ -835,8 +830,6 @@ function Modules() {
     </div>
   );
 }
-
-/* ---------- technical skills ---------- */
 
 function Flow() {
   return (
@@ -879,8 +872,6 @@ function Flow() {
     </div>
   );
 }
-
-/* ---------- contact email ---------- */
 
 function CopyEmail() {
   return (
@@ -930,8 +921,6 @@ function CopyEmail() {
   );
 }
 
-/* ---------- social links ---------- */
-
 function SocialLinks({
   variant,
 }: {
@@ -978,8 +967,6 @@ function SocialLinks({
   );
 }
 
-/* ---------- application ---------- */
-
 const BTN =
   "h-auto rounded-full border-[1.5px] px-[26px] py-3 font-semibold transition-[background,color,translate] duration-300 hover:-translate-y-[3px]";
 
@@ -995,8 +982,6 @@ export default function App() {
 
     return () => window.clearTimeout(timer);
   }, []);
-
-  /* Scroll progress and active navigation */
 
   useEffect(() => {
     const root = document.documentElement;
@@ -1079,8 +1064,6 @@ export default function App() {
     };
   }, []);
 
-  /* Mouse-follow effect */
-
   const spot = (event: PointerEvent<HTMLElement>) => {
     const rect =
       event.currentTarget.getBoundingClientRect();
@@ -1100,7 +1083,6 @@ export default function App() {
 
   return (
     <div>
-      {/* Sidebar */}
 
       <aside
         className={`sticky top-0 z-40 flex flex-row items-center gap-3 overflow-x-auto bg-deep px-4 py-2.5 text-mist transition-transform duration-[900ms] ease-soft nav:fixed nav:inset-y-0 nav:left-0 nav:w-[268px] nav:flex-col nav:items-stretch nav:gap-9 nav:overflow-visible nav:px-5 nav:py-7 ${
@@ -1167,8 +1149,6 @@ export default function App() {
         <SocialLinks variant="side" />
       </aside>
 
-      {/* Main content */}
-
       <div className="nav:ml-[268px]">
         <header className="sticky top-[60px] z-30 flex h-[52px] items-center justify-between bg-mist/85 px-5 backdrop-blur-[10px] nav:top-0 nav:h-16 nav:px-14">
           <p className="text-[0.95rem]">
@@ -1202,7 +1182,6 @@ export default function App() {
         </header>
 
         <main>
-          {/* Hero */}
 
           <section
             id="overview"
@@ -1284,8 +1263,6 @@ export default function App() {
             <QueryPanel go={go} />
           </section>
 
-          {/* Highlights */}
-
           <section
             className={`${PAD} grid grid-cols-1 border-y border-ink/14 nav:grid-cols-3`}
             aria-label="Career highlights"
@@ -1310,8 +1287,6 @@ export default function App() {
             />
           </section>
 
-          {/* Projects */}
-
           <section
             id="modules"
             className={`${PAD} pt-22 nav:pt-30`}
@@ -1322,8 +1297,6 @@ export default function App() {
               <Modules />
             </Reveal>
           </section>
-
-          {/* Skills */}
 
           <section
             id="architecture"
@@ -1341,8 +1314,6 @@ export default function App() {
               </p>
             </Reveal>
           </section>
-
-          {/* Experience */}
 
           <section
             id="experience"
@@ -1381,8 +1352,6 @@ export default function App() {
             </Reveal>
           </section>
 
-          {/* Contact */}
-
           <section
             id="contact"
             className="relative mt-30 overflow-hidden bg-deep px-5 py-24 text-mist after:absolute after:-top-[120px] after:-right-[120px] after:size-[380px] after:animate-pulse-soft after:rounded-full after:bg-gold/90 after:content-[''] nav:px-14"
@@ -1411,8 +1380,6 @@ export default function App() {
             </div>
           </section>
         </main>
-
-        {/* Footer */}
 
         <footer className="px-5 pt-6 pb-8 text-[0.9rem] nav:px-14">
           <p>
