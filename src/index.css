@@ -1,0 +1,145 @@
+/* Layer order so Tailwind utilities beat Mantine's styles */
+@layer theme, base, mantine, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme {
+  /* colors -> bg-deep, text-mist, border-ink/14, ... */
+  --color-deep: #0f3d3e;
+  --color-deep2: #17575a;
+  --color-mist: #edf2f1;
+  --color-ink: #0b1f20;
+  --color-gold: #f2b632;
+  --color-aqua: #5bb5e8;
+
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Hanken Grotesk", system-ui, sans-serif;
+
+  --ease-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* breakpoints (mobile-first): nav: >=860px, wide: >=1100px */
+  --breakpoint-nav: 860px;
+  --breakpoint-wide: 1100px;
+
+  /* animations -> animate-up, animate-bloom, ... */
+  --animate-up: up 0.9s var(--ease-soft) both;
+  --animate-bloom: bloom 1.5s var(--ease-soft) both;
+  --animate-blink: blink 1s steps(1) infinite;
+  --animate-line: line 0.5s var(--ease-soft) both;
+  --animate-swap: swap 0.5s var(--ease-soft);
+  --animate-panel-in: panel-in 0.6s var(--ease-soft);
+  --animate-fill: fill 7s linear forwards;
+  --animate-rise: rise 3.6s var(--ease-soft) infinite alternate;
+  --animate-pick: pick 4.5s infinite;
+  --animate-nudge: nudge 2.4s infinite;
+  --animate-slide: slide 0.6s var(--ease-soft) both;
+  --animate-scan: scan 4.2s var(--ease-soft) infinite alternate;
+  --animate-pop: pop 0.6s var(--ease-soft) both;
+  --animate-fly: fly 3.2s var(--ease-soft) infinite;
+  --animate-lit: lit 6s infinite;
+  --animate-travel: travel 6s infinite;
+  --animate-travel-y: travel-y 6s infinite;
+  --animate-ping-gold: ping-gold 2.4s infinite;
+  --animate-pulse-soft: pulse-soft 6s ease-in-out infinite;
+  --animate-music-wave: music-wave 900ms ease-in-out infinite alternate;
+
+  @keyframes up {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes bloom {
+    from {
+      opacity: 0;
+      transform: translateY(0.4em) rotate(-8deg);
+      font-variation-settings: "SOFT" 0, "WONK" 0, "opsz" 9;
+      font-weight: 100;
+    }
+    to {
+      opacity: 1;
+      transform: none;
+      font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
+      font-weight: 500;
+    }
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  @keyframes line { from { opacity: 0; transform: translateX(-12px); } }
+  @keyframes swap { from { opacity: 0; transform: translateY(8px); } }
+  @keyframes panel-in { from { opacity: 0; transform: translateX(24px); } }
+  @keyframes fill { to { transform: scaleX(1); } }
+  @keyframes rise {
+    from { transform: scaleY(0.15); }
+    35%, to { transform: none; }
+  }
+  @keyframes pick {
+    0%, 28%, 100% { background: #fff; color: var(--color-ink); }
+    5%, 25% { background: var(--color-aqua); color: var(--color-ink); }
+  }
+  @keyframes nudge { 50% { transform: translateY(-3px); } }
+  @keyframes slide { from { opacity: 0; transform: translateX(-30px); } }
+  @keyframes scan {
+    from { transform: translateY(44px); }
+    to { transform: translateY(176px); }
+  }
+  @keyframes pop { from { opacity: 0; transform: scale(0.7); } }
+  @keyframes fly {
+    0% { transform: translate(-90px, -150px) rotate(-14deg); opacity: 0; }
+    40%, 60% { transform: none; opacity: 1; }
+    100% { transform: translate(90px, 10px) scale(0.6); opacity: 0; }
+  }
+  @keyframes lit {
+    0%, 24%, 100% { background: #fff; transform: none; }
+    4%, 20% { background: var(--color-gold); transform: translateY(-6px); }
+  }
+  @keyframes travel {
+    0% { left: 0; opacity: 0; }
+    4% { opacity: 1; }
+    20% { left: calc(100% - 12px); opacity: 1; }
+    24%, 100% { left: calc(100% - 12px); opacity: 0; }
+  }
+  @keyframes travel-y {
+    0% { top: 0; opacity: 0; }
+    4% { opacity: 1; }
+    20% { top: calc(100% - 12px); opacity: 1; }
+    24%, 100% { top: calc(100% - 12px); opacity: 0; }
+  }
+  @keyframes ping-gold {
+    0% { box-shadow: 0 0 0 0 rgba(242, 182, 50, 0.6); }
+    70%, 100% { box-shadow: 0 0 0 14px rgba(242, 182, 50, 0); }
+  }
+  @keyframes pulse-soft { 50% { transform: scale(1.08); } }
+  @keyframes music-wave {
+    from { transform: scaleY(0.55); }
+    to { transform: scaleY(1); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+  }
+  body {
+  @apply overflow-x-hidden bg-mist font-sans leading-relaxed text-ink antialiased;
+}
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    line-height: 1.05;
+    font-variation-settings: "SOFT" 60, "opsz" 72;
+  }
+  a { color: inherit; }
+  button { cursor: pointer; }
+  :focus-visible {
+    outline: 3px solid var(--color-aqua);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
