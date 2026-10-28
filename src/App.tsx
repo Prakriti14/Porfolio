@@ -818,7 +818,7 @@ function Modules() {
     rel="noreferrer"
     className="mt-5 inline-flex items-center gap-1.5 font-semibold text-deep underline decoration-gold decoration-2 underline-offset-4 transition-[gap] duration-200 hover:gap-2.5"
   >
-    Open Resume Builder
+    {project.tab}
     <IconExternalLink size={16} aria-hidden="true" />
   </a>
 )}

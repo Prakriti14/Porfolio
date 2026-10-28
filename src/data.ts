@@ -45,6 +45,7 @@ export type Project = {
   points: string[];
   tags: string[];
   link?: string;
+  tab?:  string;
 };
 
 export const projects: Project[] = [
@@ -120,6 +121,7 @@ export const projects: Project[] = [
     kind: "resume",
     title: "Resume Builder",
     link: "https://resume-delta-pied-38.vercel.app/",
+    tab: "Open Resume Builder",
 
     summary:
       "A resume generator where you fill in your details, pick a template and download a ready-to-send PDF.",
@@ -141,7 +143,8 @@ export const projects: Project[] = [
   {
     kind: "shop",
     title: "ShopAdmin",
-
+    link: "https://shopadmin-kappa.vercel.app/",
+     tab: "Open Shop Admin",
     summary:
       "A shop dashboard with separate admin and buyer logins, where admins manage orders and stock and buyers browse, order and track deliveries.",
 
