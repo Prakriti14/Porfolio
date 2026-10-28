@@ -10,11 +10,8 @@ export const profile = {
     "I'm a developer at SG Design Group with 2+ years of experience building business applications. I work across React and TypeScript on the frontend and NestJS and GraphQL on the backend. My work includes dashboards, timesheet tools, reporting features, and document management. I enjoy solving problems, learning new things, and building software that is easy to use and maintain.",
 
   email: "dahal.prakriti99@gmail.com",
-
   github: "https://github.com/Prakriti14",
-
-  // Replace this with your actual LinkedIn profile URL.
-  linkedin: "https://www.linkedin.com/in/your-username",
+  linkedin: "https://www.linkedin.com/in/prakriti-dahal-117864198/",
 };
 
 export const query = `query {
