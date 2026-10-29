@@ -30,22 +30,35 @@ export const response = [
   '    "experience": "2+ years",',
   '    "skills": ["React", "TypeScript", "NestJS", "GraphQL"],',
   '    "projects": [',
-  '      "Business Applications",',
+  '      "Timesheets and Reports",',
   '      "Document Management",',
+  '      "MEP Calculator",',
+  '      "Hotel Website",',
   '      "Music Recommendations"',
+  '      "Resume Builder",',
+  '      "Shop Admin"',
   "    ]",
   "  }",
   "}",
 ];
 
 export type Project = {
-  kind: "dashboard" | "report" | "documents" | "music" | "resume" | "shop";
+  kind:
+    | "dashboard"
+    | "report"
+    | "documents"
+    | "music"
+    | "resume"
+    | "shop"
+    | "hotel"
+    | "mep";
   title: string;
   summary: string;
   points: string[];
   tags: string[];
   link?: string;
-  tab?:  string;
+  tab?: string;
+  status?: string;
 };
 
 export const projects: Project[] = [
@@ -92,6 +105,31 @@ export const projects: Project[] = [
       "GraphQL",
       "AWS",
       "TypeORM",
+    ],
+  },
+
+  {
+    kind: "mep",
+    title: "MEP Calculator",
+    status: "Currently working on this",
+
+    summary:
+      "An engineering web app for HVAC and MEP calculations, with car park and supplementary AC calculators and saved projects.",
+
+    points: [
+      "Build the car park and supplementary AC calculators with results views",
+      "Save, list, update and delete projects through GraphQL",
+      "Create sign-up and sign-in pages with email verification and password reset",
+      "Add notifications and a navbar that adapts to the logged-in user",
+    ],
+
+    tags: [
+      "React",
+      "TypeScript",
+      "Apollo Client",
+      "GraphQL",
+      "Mantine",
+      "Tailwind CSS",
     ],
   },
 
@@ -144,7 +182,8 @@ export const projects: Project[] = [
     kind: "shop",
     title: "ShopAdmin",
     link: "https://shopadmin-kappa.vercel.app/",
-     tab: "Open Shop Admin",
+    tab: "Open Shop Admin",
+
     summary:
       "A shop dashboard with separate admin and buyer logins, where admins manage orders and stock and buyers browse, order and track deliveries.",
 
@@ -160,6 +199,30 @@ export const projects: Project[] = [
       "TypeScript",
       "Mantine",
       "Tailwind CSS",
+    ],
+  },
+
+  {
+    kind: "hotel",
+    title: "Hotel Website",
+    link: "https://hotel-website-pi-two.vercel.app/",
+    tab: "Open Hotel Website",
+
+    summary:
+      "A hotel website with room booking, wellness facilities and a multi-cuisine menu, built entirely on the frontend.",
+
+    points: [
+      "Build room listings with type filters and a booking form with validation",
+      "Calculate nights, add-ons and tax live in a booking summary",
+      "Add scroll reveals, animated illustrations and a light and dark theme",
+      "Create sections for sauna, steam room, gym, pool and dining menus",
+    ],
+
+    tags: [
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+      "Vite",
     ],
   },
 ];

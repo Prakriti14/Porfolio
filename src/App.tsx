@@ -16,9 +16,11 @@ import {
 
 import {
   IconArrowRight,
+  IconBed,
   IconBriefcase,
   IconBrandGithub,
   IconBrandLinkedin,
+  IconCalculator,
   IconCheck,
   IconCopy,
   IconDownload,
@@ -399,7 +401,11 @@ function Mock({
             ? "Resume Builder"
             : kind === "shop"
               ? "ShopAdmin"
-              : "Swortaal";
+              : kind === "hotel"
+                ? "Aurelia Grand"
+                : kind === "mep"
+                  ? "MEP Calculator"
+                  : "Swortaal";
 
   return (
     <div
@@ -666,6 +672,110 @@ function Mock({
         </div>
       )}
 
+      {kind === "hotel" && (
+        <div className="relative grid min-h-[240px] gap-3 p-3.5 pb-10">
+          <div className="relative grid h-[84px] place-items-center overflow-hidden rounded-lg bg-deep text-mist">
+            <i className="absolute top-3 right-5 size-6 animate-pulse-soft rounded-full bg-gold" />
+            <span className="font-serif text-[1.1rem]">
+              Aurelia Grand
+            </span>
+          </div>
+
+          <div className="flex gap-2">
+            {["Check-in", "Check-out", "Guests"].map(
+              (label, i) => (
+                <span
+                  key={label}
+                  style={idx(i)}
+                  className={`${CHIP} animate-pick [animation-delay:calc(var(--i)*1.5s)]`}
+                >
+                  {label}
+                </span>
+              ),
+            )}
+          </div>
+
+          <div className="grid grid-cols-3 gap-2.5">
+            {["bg-aqua", "bg-gold", "bg-deep2"].map(
+              (color, i) => (
+                <div
+                  key={color}
+                  style={idx(i)}
+                  className="grid animate-pop gap-1.5 rounded-lg border border-ink/14 bg-white p-2 [animation-delay:calc(var(--i)*90ms)]"
+                >
+                  <b className={`h-[34px] rounded ${color}`} />
+                  <i className="h-1.5 rounded-sm bg-ink/14" />
+                  <i className="h-1.5 w-3/5 rounded-sm bg-ink/14" />
+                </div>
+              ),
+            )}
+          </div>
+
+          <IconBed
+            className="absolute right-[18px] bottom-[14px] animate-nudge text-deep"
+            size={22}
+            stroke={1.75}
+          />
+        </div>
+      )}
+
+      {kind === "mep" && (
+        <div className="relative grid min-h-[240px] gap-3 p-3.5 pb-10">
+          <div className="flex gap-2">
+            {["Car park", "Supplementary AC", "Refrigerant Charge"].map(
+              (label, i) => (
+                <span
+                  key={label}
+                  style={idx(i)}
+                  className={`${CHIP} animate-pick [animation-delay:calc(var(--i)*2.25s)]`}
+                >
+                  {label}
+                </span>
+              ),
+            )}
+          </div>
+
+          <div className="grid gap-2 rounded-lg border border-ink/14 bg-white p-2.5">
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                style={idx(i)}
+                className="grid animate-slide grid-cols-[1.2fr_1fr_1fr] gap-2 [animation-delay:calc(var(--i)*110ms+100ms)]"
+              >
+                <i className="h-2 rounded bg-ink/14" />
+                <i className="h-2 rounded bg-deep2/40" />
+                <i className="h-2 rounded bg-ink/14" />
+              </div>
+            ))}
+          </div>
+
+          <div className="grid gap-2 rounded-lg bg-deep p-3">
+            <i className="h-2 w-1/3 rounded bg-mist/50" />
+
+            <div className="flex h-[46px] items-end gap-1.5">
+              {[40, 65, 50, 90, 70].map((height, i) => (
+                <i
+                  key={i}
+                  style={{
+                    ...idx(i),
+                    "--h": `${height}%`,
+                  } as CSSProperties}
+                  className={`block h-(--h) flex-1 origin-bottom animate-rise rounded-t-[3px] [animation-delay:calc(var(--i)*140ms)] ${
+                    i === 3 ? "bg-gold" : "bg-mist/40"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <IconCalculator
+            className="absolute right-[18px] bottom-[14px] animate-nudge text-deep"
+            size={22}
+            stroke={1.75}
+          />
+        </div>
+      )}
+
       {kind === "music" && (
         <div className="relative flex h-full min-h-[270px] flex-col items-center justify-center gap-[18px] overflow-hidden p-6">
           <div className="grid aspect-square w-[110px] place-items-center rounded-[22px] border border-white/15 bg-linear-to-br from-[rgba(120,148,125,0.75)] to-[rgba(52,76,158,0.75)] shadow-[0_12px_35px_rgba(0,0,0,0.18)]">
@@ -786,6 +896,13 @@ function Modules() {
         key={tab}
       >
         <div>
+          {project.status && (
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold bg-gold/15 px-3 py-1 text-[0.8rem] font-semibold">
+              <i className="size-2 animate-pulse-soft rounded-full bg-gold" />
+              {project.status}
+            </span>
+          )}
+
           <p className="mb-5 font-serif text-[1.4rem] leading-[1.3]">
             {project.summary}
           </p>
@@ -1282,7 +1399,7 @@ export default function App() {
 
             <Stat
               i={2}
-              to={6}
+              to={7}
               label="featured projects"
             />
           </section>
