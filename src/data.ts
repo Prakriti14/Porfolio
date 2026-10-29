@@ -1,20 +1,21 @@
+
 export const profile = {
   name: "Prakriti Dahal",
   role: "Full-Stack Developer",
   photo: "/profile2.png",
 
   intro:
-    "I build web applications that solve real problems. From clean user interfaces to APIs and databases, I enjoy turning ideas into useful software.",
+    "I build modern web applications from frontend to backend, turning ideas into practical, reliable software using React, TypeScript, NestJS, and GraphQL.",
 
   about:
-    "I'm a developer at SG Design Group with 2+ years of experience building business applications. I work across React and TypeScript on the frontend and NestJS and GraphQL on the backend. My work includes dashboards, timesheet tools, reporting features, and document management. I enjoy solving problems, learning new things, and building software that is easy to use and maintain.",
+    "I'm a developer at SG Design Group with 2+ years of professional experience building business applications. My work focuses on React and TypeScript on the frontend, with experience integrating GraphQL APIs and working with NestJS, PostgreSQL, and related backend technologies. I've contributed to timesheet management, document management, reporting, and engineering calculation applications. I also build independent projects to explore new ideas and strengthen my full-stack development skills. I'm interested in remote opportunities and international teams where I can contribute to useful products and continue growing as a developer.",
 
   email: "dahal.prakriti99@gmail.com",
   github: "https://github.com/Prakriti14",
   linkedin: "https://www.linkedin.com/in/prakriti-dahal-117864198/",
 };
 
-export const query = `query {
+export const query = `query DeveloperProfile {
   developer(name: "Prakriti Dahal") {
     role
     experience
@@ -28,15 +29,23 @@ export const response = [
   '  "developer": {',
   '    "role": "Full-Stack Developer",',
   '    "experience": "2+ years",',
-  '    "skills": ["React", "TypeScript", "NestJS", "GraphQL"],',
+  '    "skills": [',
+  '      "React",',
+  '      "TypeScript",',
+  '      "NestJS",',
+  '      "GraphQL",',
+  '      "PostgreSQL",',
+  '      "Apollo Client",',
+  '      "Tailwind CSS"',
+  "    ],",
   '    "projects": [',
-  '      "Timesheets and Reports",',
+  '      "Timesheets & Reports",',
   '      "Document Management",',
   '      "MEP Calculator",',
-  '      "Hotel Website",',
-  '      "Music Recommendations"',
+  '      "ShopAdmin",',
   '      "Resume Builder",',
-  '      "Shop Admin"',
+  '      "Hotel Website",',
+  '      "Swortaal"',
   "    ]",
   "  }",
   "}",
@@ -62,23 +71,25 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+
   {
     kind: "report",
     title: "Timesheets & Reports",
 
     summary:
-      "Building tools that help teams record work, track progress, and manage project information.",
+      "Business applications for recording work, tracking project progress, and managing timesheet and reporting workflows.",
 
     points: [
-      "Build forms and tables for timesheet management",
-      "Add filters, pagination, and status-based views",
-      "Connect frontend actions to GraphQL queries and mutations",
-      "Work with backend services to manage data and business rules",
+      "Build timesheet forms, data tables, and status-based views",
+      "Implement filtering and pagination for project-related records",
+      "Integrate frontend features with GraphQL queries and mutations",
+      "Work with backend services to support data handling and business workflows",
     ],
 
     tags: [
       "React",
       "TypeScript",
+      "Mantine",
       "GraphQL",
       "NestJS",
       "PostgreSQL",
@@ -90,20 +101,22 @@ export const projects: Project[] = [
     title: "Document Management",
 
     summary:
-      "Working on a document system that helps teams upload, organise, and find files.",
+      "A business document management application for uploading, organizing, and accessing files through a web interface.",
 
     points: [
-      "Build file management interfaces and upload workflows",
-      "Work with AWS storage and CloudFront delivery",
-      "Connect frontend actions to backend APIs",
-      "Support access control, search, and document filters",
+      "Develop document management interfaces and file upload workflows",
+      "Integrate frontend functionality with backend APIs",
+      "Work with AWS S3 and CloudFront for file storage and delivery",
+      "Contribute to document filtering and access-related workflows",
     ],
 
     tags: [
       "React",
+      "TypeScript",
       "NestJS",
       "GraphQL",
-      "AWS",
+      "AWS S3",
+      "CloudFront",
       "TypeORM",
     ],
   },
@@ -114,13 +127,13 @@ export const projects: Project[] = [
     status: "Currently working on this",
 
     summary:
-      "An engineering web app for HVAC and MEP calculations, with car park and supplementary AC calculators and saved projects.",
+      "An engineering web application for HVAC and MEP calculations, including car park and supplementary air-conditioning calculators and saved projects.",
 
     points: [
-      "Build the car park and supplementary AC calculators with results views",
-      "Save, list, update and delete projects through GraphQL",
-      "Create sign-up and sign-in pages with email verification and password reset",
-      "Add notifications and a navbar that adapts to the logged-in user",
+      "Build calculation forms and results views for engineering workflows",
+      "Implement project creation, listing, updating, and deletion through GraphQL",
+      "Develop authentication interfaces, including email verification and password reset",
+      "Create user-aware navigation and notification workflows",
     ],
 
     tags: [
@@ -134,64 +147,19 @@ export const projects: Project[] = [
   },
 
   {
-    kind: "music",
-    title: "Swortaal",
-
-    summary:
-      "A music recommendation project inspired by music streaming platforms, built to help users discover music based on their interests.",
-
-    points: [
-      "Developed a music recommendation system as my final-year project",
-      "Used the Apriori algorithm to explore patterns in user preferences",
-      "Applied matrix factorization for music recommendations",
-      "Included user feedback in the recommendation process",
-    ],
-
-    tags: [
-      "Python",
-      "Machine Learning",
-      "Apriori",
-      "Matrix Factorization",
-    ],
-  },
-
-  {
-    kind: "resume",
-    title: "Resume Builder",
-    link: "https://resume-delta-pied-38.vercel.app/",
-    tab: "Open Resume Builder",
-
-    summary:
-      "A resume generator where you fill in your details, pick a template and download a ready-to-send PDF.",
-
-    points: [
-      "Build a live preview that updates as you type",
-      "Create 8 switchable resume templates",
-      "Add and remove multiple work experience entries",
-      "Export the resume as a PDF using the browser print dialog",
-    ],
-
-    tags: [
-      "React",
-      "TypeScript",
-      "CSS Animations",
-    ],
-  },
-
-  {
     kind: "shop",
     title: "ShopAdmin",
     link: "https://shopadmin-kappa.vercel.app/",
-    tab: "Open Shop Admin",
+    tab: "View Live Project",
 
     summary:
-      "A shop dashboard with separate admin and buyer logins, where admins manage orders and stock and buyers browse, order and track deliveries.",
+      "A shop management dashboard with separate admin and buyer experiences for managing inventory, orders, customers, and purchases.",
 
     points: [
-      "Build role-based views so admins and buyers see different pages",
-      "Create order, inventory, analytics and customer screens for admins",
-      "Add a shop, cart and order tracking for buyers",
-      "Update stock and send notifications automatically when orders change",
+      "Build role-based interfaces for administrators and buyers",
+      "Create inventory, order, customer, and analytics screens",
+      "Develop shopping, cart, and order-tracking interfaces",
+      "Implement frontend workflows for stock updates and order notifications",
     ],
 
     tags: [
@@ -203,19 +171,43 @@ export const projects: Project[] = [
   },
 
   {
+    kind: "resume",
+    title: "Resume Builder",
+    link: "https://resume-delta-pied-38.vercel.app/",
+    tab: "View Live Project",
+
+    summary:
+      "A browser-based resume builder that lets users enter their information, switch between templates, preview changes, and export a PDF.",
+
+    points: [
+      "Create a live resume preview that updates as users edit information",
+      "Build eight switchable resume templates",
+      "Support multiple work experience entries",
+      "Export resumes to PDF through the browser print dialog",
+    ],
+
+    tags: [
+      "React",
+      "TypeScript",
+      "CSS",
+      "Responsive Design",
+    ],
+  },
+
+  {
     kind: "hotel",
     title: "Hotel Website",
     link: "https://hotel-website-pi-two.vercel.app/",
-    tab: "Open Hotel Website",
+    tab: "View Live Project",
 
     summary:
-      "A hotel website with room booking, wellness facilities and a multi-cuisine menu, built entirely on the frontend.",
+      "A responsive hotel website featuring room listings, booking calculations, wellness facilities, and multi-cuisine dining.",
 
     points: [
-      "Build room listings with type filters and a booking form with validation",
-      "Calculate nights, add-ons and tax live in a booking summary",
-      "Add scroll reveals, animated illustrations and a light and dark theme",
-      "Create sections for sauna, steam room, gym, pool and dining menus",
+      "Build room listings with filters and booking form validation",
+      "Calculate stay duration, add-ons, and taxes in the booking summary",
+      "Create sections for accommodation, wellness, and dining",
+      "Add scroll animations and light and dark themes",
     ],
 
     tags: [
@@ -223,6 +215,28 @@ export const projects: Project[] = [
       "JavaScript",
       "Tailwind CSS",
       "Vite",
+    ],
+  },
+
+  {
+    kind: "music",
+    title: "Swortaal",
+
+    summary:
+      "A music recommendation system developed as a BSc CSIT final-year project to help users discover music based on preferences and recommendation techniques.",
+
+    points: [
+      "Develop a music recommendation system inspired by streaming platforms",
+      "Apply the Apriori algorithm to identify patterns in user preferences",
+      "Use matrix factorization for music recommendations",
+      "Incorporate user feedback into the recommendation process",
+    ],
+
+    tags: [
+      "Python",
+      "Machine Learning",
+      "Apriori",
+      "Matrix Factorization",
     ],
   },
 ];
@@ -235,66 +249,90 @@ export const layers = [
       "TypeScript",
       "JavaScript",
       "Tailwind CSS",
-      "Mantine",
+      "Mantine UI",
+      "HTML5",
+      "CSS3",
     ],
-    note: "Building responsive interfaces and reusable components",
+    note:
+      "Building responsive interfaces, reusable components, and interactive application workflows",
   },
 
   {
-    name: "API",
+    name: "API & State Management",
     items: [
       "GraphQL",
       "Apollo Client",
+      "REST API Integration",
     ],
-    note: "Connecting the frontend to the data it needs",
+    note:
+      "Connecting frontend applications to backend services and managing server data",
   },
 
   {
     name: "Backend",
     items: [
+      "Node.js",
       "NestJS",
+      "GraphQL",
       "TypeORM",
     ],
-    note: "Building APIs, handling rules, and managing data",
+    note:
+      "Working with API services, application logic, and data access layers",
   },
 
   {
     name: "Database & Cloud",
     items: [
       "PostgreSQL",
+      "SQL",
       "AWS",
       "S3",
       "CloudFront",
     ],
-    note: "Storing data and delivering files",
+    note:
+      "Working with relational data, cloud storage, and file delivery services",
+  },
+
+  {
+    name: "Development Tools",
+    items: [
+      "Git",
+      "GitHub",
+      "VS Code",
+      "ESLint",
+      "pgAdmin",
+    ],
+    note:
+      "Version control, debugging, database inspection, and maintaining code quality",
   },
 ];
 
 export const experience = [
   {
     when: "2+ years",
-    title: "Full-Stack Developer",
+    title: "Front-End Developer",
     place: "SG Design Group",
 
     text:
-      "Building and improving business applications, including timesheet tools, document management systems, reporting features, and MEP calculation tools. Working across React, TypeScript, GraphQL, NestJS, and databases to turn requirements into working features.",
+      "Developing business applications using React, TypeScript, and modern UI libraries. Contributing to timesheet management, document management, reporting, and MEP calculation workflows. Integrating GraphQL APIs and collaborating across frontend and backend functionality using technologies including NestJS, PostgreSQL, and TypeORM.",
+
   },
 
   {
     when: "Internship",
-    title: "Frontend Developer",
+    title: "Front-End Development Intern",
     place: "Hotel Website Project",
 
     text:
-      "Worked with HTML, CSS, and JavaScript to build website interfaces. Gained practical experience with page layouts, styling, and interactive web features.",
+      "Gained practical web development experience using HTML, CSS, and JavaScript. Worked on website layouts, styling, interactive elements, and the fundamentals of building user-friendly web interfaces.",
   },
 
   {
-    when: "BSc CSIT",
-    title: "Final-Year Project",
-    place: "Swortaal",
+    when: "2019–2023",
+    title: "BSc CSIT",
+    place: "Kathford International College of Engineering and Management",
 
     text:
-      "Built a music recommendation system using Apriori, matrix factorization, and user feedback. The project brought together software development and recommendation techniques to help users discover music.",
+      "Completed a Bachelor of Science in Computer Science and Information Technology with 78%. Developed Swortaal, a music recommendation system using the Apriori algorithm, matrix factorization, and user feedback.",
   },
 ];
